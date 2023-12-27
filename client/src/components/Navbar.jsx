@@ -28,7 +28,7 @@ function Navbar() {
           <Link className="link" to="/?cat=movies">
             <h6>MOVIES</h6>
           </Link>
-          <span>John</span>
+          <span>Logan</span>
           <span>Logout</span>
           <span className="log">
             <Link className="link" to="/log">
