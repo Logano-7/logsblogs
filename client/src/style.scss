@@ -1,6 +1,7 @@
-$lightGreen: #b9e7e7;
-$primary: #ffaa48;
-$secondary: #ff8a00;
+$primary: #ff8a00;
+$compBlue: #0075ff;
+$titleBlue: #001e46;
+$lightpry: #ffad50;
 
 .app {
   display: flex;
@@ -24,8 +25,8 @@ $secondary: #ff8a00;
 
       h1 {
         font-size: 20px;
-
         margin-bottom: 20px;
+        color: white;
       }
       form {
         display: flex;
@@ -38,14 +39,20 @@ $secondary: #ff8a00;
         input {
           padding: 10px;
           border: none;
-          border-bottom: 1px solid gray;
+          border-bottom: 1px solid $lightpry;
         }
         button {
           padding: 10px;
           border: none;
-          background-color: $secondary;
+          background-color: $compBlue;
           color: #fff;
-          cursor: pointer;
+          &:hover {
+            background-color: white;
+            cursor: pointer;
+            color: $compBlue;
+            border: 1px solid $compBlue;
+            padding: 9px;
+          }
         }
         p {
           font-size: 12px;
@@ -57,9 +64,10 @@ $secondary: #ff8a00;
           font-size: 12px;
           text-align: center;
           a {
-            color: $secondary;
+            color: $compBlue;
             text-decoration: none;
             &:hover {
+              cursor: pointer;
               text-decoration: underline;
             }
           }
@@ -76,7 +84,7 @@ $secondary: #ff8a00;
         justify-content: space-between;
         .logo {
           img {
-            width: 100px;
+            width: 300px;
           }
         }
         .links {
@@ -86,12 +94,18 @@ $secondary: #ff8a00;
           h6 {
             font-size: 16px;
             font-weight: 300;
+            color: $lightpry;
+
+            &:hover {
+              cursor: pointer;
+              color: $primary;
+            }
           }
           span {
             cursor: pointer;
           }
           .log {
-            background-color: $secondary;
+            background-color: $compBlue;
             color: #fff;
             width: 50px;
             height: 50px;
@@ -105,8 +119,8 @@ $secondary: #ff8a00;
               width: 48px;
               height: 48px;
               background-color: white;
-              color: $secondary;
-              border: 1px solid $secondary;
+              color: $compBlue;
+              border: 1px solid $compBlue;
             }
           }
         }
@@ -124,7 +138,25 @@ $secondary: #ff8a00;
       justify-content: space-between;
       font-size: 12px;
       img {
-        height: 50px;
+        width: 300px;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        ul {
+          display: flex;
+          align-items: center;
+          list-style: none;
+          li {
+            margin-right: 20px;
+
+            a {
+              text-decoration: none;
+              color: white;
+            }
+          }
+        }
       }
     }
 
@@ -151,7 +183,7 @@ $secondary: #ff8a00;
               content: "";
               width: 100%;
               height: 100%;
-              background-color: $secondary;
+              background-color: $primary;
               position: absolute;
               top: 20px;
               left: -20px;
@@ -171,10 +203,12 @@ $secondary: #ff8a00;
 
             h1 {
               font-size: 48px;
+              color: $titleBlue;
             }
             p {
               font-size: 18px;
               font-weight: 300;
+              color: gray;
             }
             button {
               padding: 10px 20px;
@@ -182,12 +216,12 @@ $secondary: #ff8a00;
               border: none;
               cursor: pointer;
               background-color: white;
-              border: 1px solid $secondary;
-              color: $secondary;
+              border: 1px solid $compBlue;
+              color: $compBlue;
 
               &:hover {
                 border: 1px solid white;
-                background-color: $primary;
+                background-color: $compBlue;
                 color: white;
               }
             }
@@ -239,7 +273,7 @@ $secondary: #ff8a00;
         }
         h1 {
           font-size: 48px;
-          color: #333;
+          color: $titleBlue;
         }
         p {
           text-align: justify;
@@ -254,7 +288,7 @@ $secondary: #ff8a00;
 
         h1 {
           font-size: 20px;
-          color: #666;
+          color: $lightpry;
         }
         .post {
           display: flex;
@@ -267,7 +301,7 @@ $secondary: #ff8a00;
             object-fit: cover;
           }
           h2 {
-            color: #666;
+            color: $lightpry;
           }
           button {
             padding: 7.5px 15px;
@@ -275,13 +309,13 @@ $secondary: #ff8a00;
             border: none;
             cursor: pointer;
             background-color: white;
-            border: 1px solid $secondary;
-            color: $secondary;
+            border: 1px solid $compBlue;
+            color: $compBlue;
 
             &:hover {
               border: 1px solid white;
-              background-color: $primary;
-              color: black;
+              background-color: $compBlue;
+              color: white;
             }
           }
         }
@@ -293,7 +327,7 @@ $secondary: #ff8a00;
       margin-top: 20px;
       display: flex;
       gap: 20px;
-      color: #666;
+      color: $titleBlue;
 
       .content {
         flex: 5;
@@ -337,10 +371,10 @@ $secondary: #ff8a00;
             font-size: 20px;
           }
 
-          .file{
-            color: $secondary;
+          .file {
+            color: $primary;
 
-            &:hover{
+            &:hover {
               text-decoration: underline;
             }
           }
@@ -350,33 +384,33 @@ $secondary: #ff8a00;
 
             :first-child {
               cursor: pointer;
-              background-color: white;
-              color: $secondary;
-              border: 1px solid $secondary;
+              background-color: $compBlue;
+              color: white;
+              border: 1px solid $compBlue;
               padding: 3px 5px;
 
-              &:hover {
-                background-color: $secondary;
-                color: white;
+              &:active {
+                background-color: white;
+                color: $compBlue;
               }
             }
             :last-child {
               cursor: pointer;
-              background-color: $secondary;
-              color: white;
-              border: 1px solid $secondary;
+              background-color: white;
+              color: $primary;
+              border: 1px solid $primary;
               padding: 3px 5px;
 
               &:hover {
-                background-color: white;
-                color: $secondary;
+                background-color: $primary;
+                color: white;
               }
             }
           }
           .cat {
             display: flex;
             align-items: center;
-            color: $secondary;
+            color: $primary;
             gap: 2px;
           }
         }

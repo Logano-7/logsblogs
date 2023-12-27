@@ -39,28 +39,28 @@ const Log = () => {
         <div className="item">
           <h1>Category</h1>
           <div className="cat">
-            <input type="radio" name="cat" value="art" id="art" />
-            <label htmlFor="art">Art</label>
-          </div>
-          <div className="cat">
-            <input type="radio" name="cat" value="science" id="science" />
-            <label htmlFor="science">Science</label>
+            <input type="radio" name="cat" value="webDev" id="webDev" />
+            <label htmlFor="webDev">Web Dev</label>
           </div>
           <div className="cat">
             <input type="radio" name="cat" value="technology" id="technology" />
             <label htmlFor="technology">Technology</label>
           </div>
           <div className="cat">
-            <input type="radio" name="cat" value="cinema" id="cinema" />
-            <label htmlFor="cinema">Cinema</label>
+            <input type="radio" name="cat" value="science" id="science" />
+            <label htmlFor="science">Science</label>
           </div>
           <div className="cat">
-            <input type="radio" name="cat" value="design" id="design" />
-            <label htmlFor="design">Design</label>
+            <input type="radio" name="cat" value="sports" id="sports" />
+            <label htmlFor="sports">Sports</label>
           </div>
           <div className="cat">
             <input type="radio" name="cat" value="food" id="food" />
             <label htmlFor="food">Food</label>
+          </div>
+          <div className="cat">
+            <input type="radio" name="cat" value="movies" id="movies" />
+            <label htmlFor="movies">Movies</label>
           </div>
         </div>
       </div>

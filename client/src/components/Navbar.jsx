@@ -10,23 +10,23 @@ function Navbar() {
           <img src={Logo} alt=".mylogs Logo" />
         </div>
         <div className="links">
-          <Link className="link" to="/?cat=art">
-            <h6>ART</h6>
-          </Link>
-          <Link className="link" to="/?cat=science">
-            <h6>SCIENCE</h6>
+          <Link className="link" to="/?cat=webDev">
+            <h6>WEB DEV</h6>
           </Link>
           <Link className="link" to="/?cat=technology">
             <h6>TECHNOLOGY</h6>
           </Link>
-          <Link className="link" to="/?cat=cinema">
-            <h6>CINEMA</h6>
+          <Link className="link" to="/?cat=science">
+            <h6>SCIENCE</h6>
           </Link>
-          <Link className="link" to="/?cat=design">
-            <h6>DESIGN</h6>
+          <Link className="link" to="/?cat=sports">
+            <h6>SPORTS</h6>
           </Link>
           <Link className="link" to="/?cat=food">
             <h6>FOOD</h6>
+          </Link>
+          <Link className="link" to="/?cat=movies">
+            <h6>MOVIES</h6>
           </Link>
           <span>John</span>
           <span>Logout</span>
