@@ -1,9 +1,4 @@
-import mysql from 'mysql'
+import mysql2 from 'mysql2'
+import dbinfo from './config/index.js'
 
-export const db = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"root",
-    database:"mylogs"
-
-})
+export const db = mysql2.createConnection(dbinfo.mysql)
