@@ -1,15 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { AuthContext } from "../Context/authContext";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
   });
-  const [err, setErr] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { login } = React.useContext(AuthContext);
 
   // Handle Change
   const handleChange = (e) => {
@@ -17,25 +18,18 @@ const Login = () => {
   };
 
   // Handle Submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await fetch('http://localhost:3000/api/auth/login', {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inputs),
-    }).then(async (res) => {
-      const data = await res.json();
-      if (res.status === 200) {
-        /* navigate("/"); */
-      } else {
-        setErr(data.message);
-      }
-    });
-  };
+  async function handleSubmit(e){
+    preventDefault(e);
+    try{
+      await login(inputs);
+      navigate("/");
+    } catch(err){
+      setError(err.response.data);
+    }
+  }
+
+
+  
 
   return (
     <div className="auth">
@@ -56,7 +50,7 @@ const Login = () => {
           onChange={handleChange}
         />
         <button onClick={handleSubmit}>Login</button>
-        {err && <p>{err}</p>}
+        {error && <p>{error}</p>}
         <span>
           <Link to="/register">Creat an Account</Link>
         </span>
