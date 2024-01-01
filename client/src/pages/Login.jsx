@@ -11,20 +11,7 @@ const Login = () => {
   const [err, setErr] = useState(null);
   const navigate = useNavigate();
 
-  // Check Cookies
-  function listCookies() {
-    let cookiesArray = document.cookie.split("; ");
-    let cookiesList = {};
-
-    cookiesArray.forEach(function (cookie) {
-      let parts = cookie.split("=");
-      cookiesList[parts[0]] = parts[1];
-    });
-
-    return cookiesList;
-  }
-
- // Handle Change
+  // Handle Change
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -32,18 +19,23 @@ const Login = () => {
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const results = await axios.post(
-        "http://localhost:3000/api/auth/login",
-        inputs
-      );
-      console.log(results);
-      console.log(document.cookie);
-    } catch (err) {
-      setErr(err.response.data);
-    }
+    await fetch('http://localhost:3000/api/auth/login', {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputs),
+    }).then(async (res) => {
+      const data = await res.json();
+      if (res.status === 200) {
+        /* navigate("/"); */
+      } else {
+        setErr(data.message);
+      }
+    });
   };
-
 
   return (
     <div className="auth">

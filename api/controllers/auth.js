@@ -44,10 +44,9 @@ export const login = (req, res) => {
     const token = jwt.sign({ id: data[0].id }, process.env.JWT_KEY);
 
     const { password, ...other } = data[0];
-console.log(res);
     res
       .cookie("access_token", token, {
-        maxAge: 3600000,
+        httpOnly: true,
       })
       .status(200)
       .json(other);
