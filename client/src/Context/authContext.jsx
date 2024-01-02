@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const AuthContext = createContext();
 
-/* export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
@@ -51,9 +51,9 @@ export const AuthContext = createContext();
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 
-};*/
+};
 
-export const AuthProvider = ({ children }) => {
+/* export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(
       JSON.parse(localStorage.getItem("user")) || null
     );
@@ -77,4 +77,4 @@ export const AuthProvider = ({ children }) => {
         {children}
       </AuthContext.Provider>
     );
-  };
+  }; */

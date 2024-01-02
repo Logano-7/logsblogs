@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/authContext";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -10,7 +9,6 @@ const Login = () => {
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { login } = React.useContext(AuthContext);
 
   // Handle Change
   const handleChange = (e) => {
@@ -20,12 +18,23 @@ const Login = () => {
   // Handle Submit
   async function handleSubmit(e){
     preventDefault(e);
-    try{
-      await login(inputs);
-      navigate("/");
-    } catch(err){
-      setError(err.response.data);
-    }
+    await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputs),
+    }).then(async (res) => {
+      const data = await res.json();
+      if (res.status === 200) {
+        setCurrentUser(data.user);
+        navigate("/");
+      } else {
+        setError(data.message);
+      }
+    });
   }
 
 
