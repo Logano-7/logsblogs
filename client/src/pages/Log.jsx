@@ -17,6 +17,26 @@ const Log = () => {
         method: "POST",
         body: formData,
       });
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const publishText = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: "admin",
+          title,
+          desc: value,
+          photo: file.name,
+          categories: cat,
+        }),
+      });
+      window.location.replace("/post/" + res.data._id);
     } catch (err) {
       console.log(err);
     }
@@ -24,7 +44,13 @@ const Log = () => {
 
   const handlePublish = async (e) => {
     e.preventDefault();
-    upload();
+    const imgUrl = upload();
+
+    try {
+      
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
