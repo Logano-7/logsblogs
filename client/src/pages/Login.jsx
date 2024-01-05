@@ -23,7 +23,7 @@ const Login = () => {
     try {
       await login(inputs);
       navigate("/");
-    } catch (err) {
+    } catch (err) { 
       setError(err.response.data);
     }
   }

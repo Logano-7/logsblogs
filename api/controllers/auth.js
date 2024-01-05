@@ -47,10 +47,13 @@ export const login = (req, res) => {
     const apiResult = res
       .cookie("access_token", token, {
         httpOnly: true,
+        maxAge:900000,
+        sameSite: "lax",
+        path:'/'
+
       })
       .status(200)
       .json(other);
-      console.log(apiResult);
       return apiResult;
 
   });

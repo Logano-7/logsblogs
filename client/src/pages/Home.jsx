@@ -1,8 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, {useState, useEffect} from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Home = () => {
-  const posts = [
+  const [posts, setPosts] = useState([]);
+
+  const cat = useLocation().search
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/api/posts${cat}`, {
+          method: "GET",
+        }).then((res) => res.json());
+        setPosts(res);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getPosts();
+  }, [cat]);
+  /* const posts = [
     {
       id: 1,
       title: "lorem ipsum dolor sit amet consectetur",
@@ -27,7 +45,7 @@ const Home = () => {
       desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim deleniti odit delectus hic facilis quae ea similique quidem ipsam quia dolore, earum voluptatibus corporis dolorum ad fugiat, eveniet nihil voluptas? Doloremque, quod sunt. Laboriosam quia a inventore veritatis alias ipsa consequuntur omnis voluptates similique et ipsam repellat asperiores deleniti dicta, ullam ex iusto nesciunt pariatur dolores nemo voluptatum beatae!",
       img: "https://picsum.photos/245",
     },
-  ];
+  ]; */
   return (
     <div className="home">
       <div className="posts">

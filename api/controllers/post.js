@@ -1,6 +1,7 @@
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
-
+// ------------------------------------------------------------------------------------------------------------
+// Get all posts
 export const getPosts = (req, res) => {
   const q = req.query.cat
     ? "SELECT * FROM posts WHERE cat=?"
@@ -12,10 +13,11 @@ export const getPosts = (req, res) => {
     return res.status(200).json(data);
   });
 };
-
+// ------------------------------------------------------------------------------------------------------------
+// Get post by id
 export const getPost = (req, res) => {
-  const q =
-    "SELECT p.id, `username`, `title`, `desc`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? ";
+  const q = //"SELECT * FROM posts WHERE id=?";
+    "SELECT `username`, `title`, `desc`, `postBody`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.userID WHERE p.id = ? ";
 
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err);
@@ -23,7 +25,8 @@ export const getPost = (req, res) => {
     return res.status(200).json(data[0]);
   });
 };
-
+// ------------------------------------------------------------------------------------------------------------
+// Add post
 export const addPost = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
@@ -49,16 +52,18 @@ export const addPost = (req, res) => {
     });
   });
 };
-
+// ------------------------------------------------------------------------------------------------------------
+// Delete post
 export const deletePost = (req, res) => {
   const token = req.cookies.access_token;
+  console.log(token);
   if (!token) return res.status(401).json("Not authenticated!");
 
   jwt.verify(token, "jwtkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const postId = req.params.id;
-    const q = "DELETE FROM posts WHERE `id` = ? AND `uid` = ?";
+    const q = "DELETE FROM posts WHERE `id` = ? AND `userID` = ?";
 
     db.query(q, [postId, userInfo.id], (err, data) => {
       if (err) return res.status(403).json("You can delete only your post!");
@@ -67,7 +72,8 @@ export const deletePost = (req, res) => {
     });
   });
 };
-
+// ------------------------------------------------------------------------------------------------------------
+// Update post
 export const updatePost = (req, res) => {
   const token = req.cookies.access_token;
   if (!token) return res.status(401).json("Not authenticated!");
