@@ -7,7 +7,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 $ git clone git@github.com:Logano-7/logsblogs.git
 
 # Go into the repository
-$ cd fullStackBlog
+$ cd logsBlogs
 
 # Go into Front-End
 $ cd client
@@ -34,6 +34,8 @@ $ npm start
 ```
 
 ## You may also like...
+
+- [SmallTalk](https://github.com/Logano-7/smalltalk) - A Full-Stack MERN Chat app with full authentication. Uses Context and local storage to navigate the user. 
 
 - [Gericht](https://github.com/Logano-7/gerichtResturantDesign) - A Modern Figma Resturant Deisgn
 
